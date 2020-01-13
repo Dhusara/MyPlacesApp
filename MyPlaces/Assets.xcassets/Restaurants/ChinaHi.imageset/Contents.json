@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "bit-20-of-48-1.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "bit-20-of-48-1.jpg",
       "scale" : "2x"
     },
     {
