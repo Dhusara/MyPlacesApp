@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "9Yg-dM-EZb"; */
+"9Yg-dM-EZb.text" = "Name";
+
+/* Class = "UILabel"; text = "Type"; ObjectID = "EIC-HX-U56"; */
+"EIC-HX-U56.text" = "Type";
+
+/* Class = "UINavigationItem"; title = "New Place"; ObjectID = "QYZ-WW-tFI"; */
+"QYZ-WW-tFI.title" = "New Place";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "Sbd-CU-K8r"; */
+"Sbd-CU-K8r.text" = "Name";
+
+/* Class = "UILabel"; text = "Location"; ObjectID = "aY4-NH-4Ba"; */
+"aY4-NH-4Ba.text" = "Location";
+
+/* Class = "UITextField"; placeholder = "Place location"; ObjectID = "cxq-Rm-IxT"; */
+"cxq-Rm-IxT.placeholder" = "Place location";
+
+/* Class = "UILabel"; text = "Location"; ObjectID = "fhe-1J-Unh"; */
+"fhe-1J-Unh.text" = "Location";
+
+/* Class = "UILabel"; text = "Type"; ObjectID = "gY5-Nm-XDF"; */
+"gY5-Nm-XDF.text" = "Type";
+
+/* Class = "UINavigationItem"; title = "My Places"; ObjectID = "jmw-R0-pVO"; */
+"jmw-R0-pVO.title" = "My Places";
+
+/* Class = "UITextField"; placeholder = "Place name"; ObjectID = "ojf-Ji-RqW"; */
+"ojf-Ji-RqW.placeholder" = "Place name";
+
+/* Class = "UITextField"; placeholder = "Place type"; ObjectID = "rAH-dI-eLZ"; */
+"rAH-dI-eLZ.placeholder" = "Place type";
