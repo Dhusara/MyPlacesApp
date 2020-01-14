@@ -5,19 +5,7 @@ use_modular_headers!
 
 target 'MyPlaces' do
 	use_frameworks!
-	#use_modular_headers!
+	use_modular_headers!
 	pod 'RealmSwift'
-      end
-
-  # Pods for MyPlaces
-
-  target 'MyPlacesTests' do
-  pod 'RealmSwift'
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'MyPlacesUITests' do
-    # Pods for testing
   end
 
