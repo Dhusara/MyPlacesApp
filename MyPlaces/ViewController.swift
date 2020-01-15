@@ -9,10 +9,24 @@
 import UIKit
 import RealmSwift
 
-class ViewController: UITableViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    private let searchController = UISearchController(searchResultsController: nil)
+    private var places: Results<Place>!
+    private var filteredPlaces: Results<Place>!
+    private var ascendingSorting = true
+    private var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+    private var isFiltering: Bool {
+        return searchController.isActive && searchBarIsEmpty == false
+    }
     
     
-    var places: Results<Place>!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var segmentedControl: UISegmentedControl!
+    @IBOutlet var reversedSotringButton: UIBarButtonItem!
     
     
     override func viewDidLoad() {
@@ -20,16 +34,32 @@ class ViewController: UITableViewController {
         
         places = realm.objects(Place.self)
         
+        // Setup search controller
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering {
+            return filteredPlaces.count
+        }
         return places.isEmpty ? 0 : places.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
 
-        let place = places[indexPath.row]
+        var place = Place()
+        
+        if isFiltering {
+            place = filteredPlaces[indexPath.row]
+        } else {
+            place = places[indexPath.row]
+        }
 
         cell.nameLabel.text = place.name
         cell.locationLabel.text = place.location
@@ -42,13 +72,84 @@ class ViewController: UITableViewController {
         return cell
     }
     
+    //Mark: Table view delegate
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) ->
+        [UITableViewRowAction]? {
+        
+            let place = places[indexPath.row]
+            let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (_, _) in
+                
+                StorageManager.deleteObject(place)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+            
+            return [deleteAction]
+            
+    }
+    
+    // Mark: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            guard let IndexPath = tableView.indexPathForSelectedRow else { return }
+            let place: Place
+            if isFiltering {
+                place = filteredPlaces[IndexPath.row]
+            } else {
+                place = places[IndexPath.row]
+            }
+            let newPlaceVC = segue.destination as! NewPlaceViewController
+            newPlaceVC.currentPlace = place
+        }
+        
+    }
+    
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
         
         guard let newPlaceVC = segue.source as? NewPlaceViewController else { return }
         
-        newPlaceVC.saveNewPlace()
+        newPlaceVC.savePlace()
         tableView.reloadData()
     }
 
+    @IBAction func sortSelection(_ sender: UISegmentedControl) {
+        
+       sorting()
+    }
+    
+    @IBAction func reversedSorting(_ sender: Any) {
+        
+        ascendingSorting.toggle()
+        
+        if ascendingSorting {
+            reversedSotringButton.image = #imageLiteral(resourceName: "AZ")
+        } else {
+            reversedSotringButton.image = #imageLiteral(resourceName: "ZA")
+        }
+        
+        sorting()
+    }
+    
+    private func sorting() {
+        
+        if segmentedControl.selectedSegmentIndex == 0 {
+            places = places.sorted(byKeyPath: "date", ascending: ascendingSorting)
+        } else {
+            places = places.sorted(byKeyPath: "name", ascending: ascendingSorting)
+        }
+    }
 }
 
+extension ViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    private func filterContentForSearchText(_ searchText: String) {
+        
+        filteredPlaces = places.filter("name CONTAINS[c] %@ OR location CONTAINS[c] %@", searchText, searchText)
+        
+        tableView.reloadData()
+    }
+    
+}
