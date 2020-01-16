@@ -101,7 +101,7 @@ import UIKit
             // Setup the button action
             button.addTarget(self, action: #selector(ratingButtonTapped(button:)), for: .touchUpInside)
             
-            // Add button to the stack
+            //  Add button to the stack
             addArrangedSubview(button)
             
             // Add button to the ratingButtons array
