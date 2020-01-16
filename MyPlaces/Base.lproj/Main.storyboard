@@ -17,7 +17,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <inset key="separatorInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
                         <sections>
-                            <tableViewSection id="Dcy-Hq-XNg">
+                            <tableViewSection headerTitle="" id="Dcy-Hq-XNg">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="250" id="FTp-PM-ojh">
                                         <rect key="frame" x="0.0" y="28" width="414" height="250"/>
@@ -154,6 +154,28 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="140" id="VjF-Nh-XFQ">
+                                        <rect key="frame" x="0.0" y="503" width="414" height="140"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VjF-Nh-XFQ" id="vM4-af-Wxx">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="252" placeholderIntrinsicHeight="44" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="M6b-PI-Fdd" customClass="RatingControl" customModule="MyPlaces" customModuleProvider="target">
+                                                    <rect key="frame" x="81" y="48" width="252" height="44"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="starCount">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="M6b-PI-Fdd" firstAttribute="centerY" secondItem="vM4-af-Wxx" secondAttribute="centerY" id="g9a-Gt-X2g"/>
+                                                <constraint firstItem="M6b-PI-Fdd" firstAttribute="centerX" secondItem="vM4-af-Wxx" secondAttribute="centerX" id="nmh-4c-xnN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -185,7 +207,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AER-Tf-5nq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="BHl-4a-Jzo" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="848" y="58"/>
+            <point key="canvasLocation" x="847.82608695652175" y="57.880434782608702"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Sd8-0v-Jjd">
@@ -305,7 +327,7 @@
                         <constraints>
                             <constraint firstItem="7oS-nC-qxF" firstAttribute="top" secondItem="laz-3q-hnn" secondAttribute="bottom" constant="8" id="13B-qO-yB3"/>
                             <constraint firstItem="laz-3q-hnn" firstAttribute="trailing" secondItem="7fl-kY-tpl" secondAttribute="trailing" id="3p1-KU-1xh"/>
-                            <constraint firstItem="7oS-nC-qxF" firstAttribute="bottom" secondItem="7fl-kY-tpl" secondAttribute="bottom" id="9av-r0-q66"/>
+                            <constraint firstItem="7oS-nC-qxF" firstAttribute="bottom" secondItem="83V-9d-G6Y" secondAttribute="bottom" id="9av-r0-q66"/>
                             <constraint firstItem="7oS-nC-qxF" firstAttribute="trailing" secondItem="7fl-kY-tpl" secondAttribute="trailing" id="SZN-kT-g96"/>
                             <constraint firstItem="laz-3q-hnn" firstAttribute="top" secondItem="7fl-kY-tpl" secondAttribute="top" id="k2k-sg-LsH"/>
                             <constraint firstItem="7oS-nC-qxF" firstAttribute="leading" secondItem="7fl-kY-tpl" secondAttribute="leading" id="qGs-xd-UjU"/>
