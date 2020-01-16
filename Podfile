@@ -7,5 +7,6 @@ target 'MyPlaces' do
 	use_frameworks!
 	use_modular_headers!
 	pod 'RealmSwift'
-  end
+	pod 'Cosmos', '~> 20.0'
+ end
 

@@ -11,7 +11,6 @@ import UIKit
 class NewPlaceViewController: UITableViewController {
     
     var currentPlace: Place!
-    
     var imageIsChanged = false
 
     @IBOutlet var saveButton: UIBarButtonItem!
