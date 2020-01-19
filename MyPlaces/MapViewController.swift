@@ -24,6 +24,18 @@ class MapViewController: UIViewController {
         checkLocationServices()
         
     }
+    
+    @IBAction func centerViewInUserLocation() {
+        
+        if let location = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion(center: location,
+                                            latitudinalMeters: 10000,
+                                            longitudinalMeters: 10000)
+            
+            mapView.setRegion(region, animated: true)
+        }
+    }
+    
     @IBAction func closeVC() {
         dismiss(animated: true)
     }
@@ -65,7 +77,11 @@ class MapViewController: UIViewController {
             setupLocationManager()
             checkLocationAuthorization()
         } else {
-            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.showAlert(
+                    title: "Location services are disabled.",
+                    message: "To enable location services, go to Settings -> Privacy.")
+            }
         }
     }
     
@@ -80,8 +96,7 @@ class MapViewController: UIViewController {
             mapView.showsUserLocation = true
             break
         case .denied:
-            let alert = UIAlertController(title: "Alert", message: "Allow to get your location.", preferredStyle: .alert)
-            self.present(alert, animated: true)
+            
             break
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
@@ -93,6 +108,14 @@ class MapViewController: UIViewController {
         @unknown default:
             print("New case is available!")
         }
+    }
+    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
     
 }
