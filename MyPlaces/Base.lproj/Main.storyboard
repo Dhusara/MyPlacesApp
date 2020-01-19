@@ -258,6 +258,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aLf-ZR-tlm"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="Vi2-WC-0Ax" id="rOr-EE-Ceq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PWs-oO-tdi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -284,7 +287,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4HB-PM-2Sb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-571.01449275362324" y="57.880434782608702"/>
+            <point key="canvasLocation" x="-529" y="58"/>
         </scene>
         <!--My Places-->
         <scene sceneID="UeP-N6-CfX">
