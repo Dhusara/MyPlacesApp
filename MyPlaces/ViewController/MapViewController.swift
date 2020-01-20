@@ -87,6 +87,10 @@ class MapViewController: UIViewController {
             goButton.isHidden = false
         }
     }
+    
+    deinit {
+        print("deinit", MapViewController.self)
+    }
         
 }
 
@@ -157,6 +161,7 @@ extension MapViewController: MKMapViewDelegate {
         
         return renderer
     }
+    
 }
 
 extension MapViewController: CLLocationManagerDelegate {
