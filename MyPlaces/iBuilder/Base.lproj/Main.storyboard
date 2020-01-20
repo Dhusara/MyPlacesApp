@@ -330,7 +330,7 @@
                         <viewLayoutGuide key="safeArea" id="aLf-ZR-tlm"/>
                     </view>
                     <connections>
-                        <outlet property="addresLabel" destination="0SQ-wC-1kb" id="Y4d-Di-jTN"/>
+                        <outlet property="addressLabel" destination="0SQ-wC-1kb" id="Y4d-Di-jTN"/>
                         <outlet property="doneButton" destination="juS-un-Pim" id="64T-rM-Pbz"/>
                         <outlet property="goButton" destination="rt7-bX-la4" id="4gs-Ng-Asb"/>
                         <outlet property="mapPin" destination="rc9-d8-j5A" id="XZq-Uo-fSw"/>
